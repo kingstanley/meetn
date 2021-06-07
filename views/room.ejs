@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Class Room</title>
+  </head>
+  <script>
+    const host = "<%= host %>";
+    const type = "<%= type %>";
+    const UIN = "<%= UIN %>";
+    const ROOM_ID = "<%= roomId %>";
+
+    let comments = [];
+    let USER;
+  </script>
+
+  <script
+    defer
+    src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"
+  ></script>
+
+  <!-- <style src="/css/bootstrap.min.css"></style> -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <body style="height: 95vh; width: 99vw">
+    <div class="row m-2">
+      <div class="col-md-9 video-container">
+        <div class="row" style="">
+          <div id="video-grid"></div>
+        </div>
+
+        <div class="row">
+          <h2 class="text-primary">The Teacher Video</h2>
+
+          <div id="teacher" class="ml-4"></div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <h4 class="text-primary">Comments</h4>
+        <div style="height: 80vh; overflow-y: scroll" class="vertical-scroll">
+          <div class="card list-group" id="commentList"></div>
+        </div>
+        <div id="commentform" style="height: 10vh">
+          <form class="form-field">
+            <textarea
+              class="form-control"
+              #comment
+              id="comment"
+              cols="1"
+            ></textarea>
+          </form>
+          <button
+            onclick="submitComment({comment:comment.value, UIN, lectureId: ROOM_ID, username: USER.UserName})"
+            class="btn btn-primary"
+            id="submitComment"
+          >
+            <i class="send"></i>Send
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"
+></script> -->
+
+<script defer src="moment.js"></script>
+<script defer src="/socket.io/socket.io.js"></script>
+<script defer src="/js/media.js"></script>
+<script defer src="/js/script.js"></script>
